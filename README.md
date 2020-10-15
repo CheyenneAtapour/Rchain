@@ -8,10 +8,13 @@ Directions to Run:
 -Clone the repo
 
 -Execute the following command in the main directory of cloned repo:
+
 cargo build
 
 -Navigate to directory:
+
 /target/debug
 
 -Execute:
+
 ./rchain_v1
