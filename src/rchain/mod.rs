@@ -43,6 +43,9 @@ pub trait WorldState {
     /// Will add a new account
     fn create_account(&mut self, id: String, account_type: AccountType) -> Result<(), &'static str>;
 
+    // Will display the current token total in the network
+    fn get_total_tokens(&self);
+
     // Will display all transactions in chronological order and block # for a given Id
     fn get_transactions_for(&self, id: String);
 }
@@ -295,6 +298,16 @@ impl WorldState for Blockchain {
         } else {
             Err("User already exists! (Code: 934823094)")
         };
+    }
+
+    fn get_total_tokens(&self)
+    {
+        let mut total = u128::MIN;
+        for (str, account) in self.accounts.iter()
+        {
+            total = total + account.tokens;
+        }
+        println!("The total tokens in the network are: {}", total);
     }
 
     fn get_transactions_for(&self, id: String) {

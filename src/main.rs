@@ -98,5 +98,6 @@ fn main() {
     println!("Is the Blockchain still valid? {:#?}", bc_attack_2.check_validity());
 
     WorldState::get_transactions_for(&bc, "bob".to_string());
+    WorldState::get_total_tokens(&bc);
 
 }
