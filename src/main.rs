@@ -1,5 +1,6 @@
 mod rchain;
 use rchain::{Blockchain, Block, Transaction, TransactionData};
+use crate::rchain::WorldState;
 use std::borrow::BorrowMut;
 
 fn main() {
@@ -96,5 +97,6 @@ fn main() {
     // Again, the blockchain is invalid but for a different reason
     println!("Is the Blockchain still valid? {:#?}", bc_attack_2.check_validity());
 
+    WorldState::get_transactions_for(&bc, "bob".to_string());
 
 }

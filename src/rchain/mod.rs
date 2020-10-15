@@ -43,7 +43,8 @@ pub trait WorldState {
     /// Will add a new account
     fn create_account(&mut self, id: String, account_type: AccountType) -> Result<(), &'static str>;
 
-    fn get_transactions_for(&self, id: String) -> Vec<Transaction>;
+    // Will display all transactions in chronological order and block # for a given Id
+    fn get_transactions_for(&self, id: String);
 }
 
 /// One single part of the blockchain.
@@ -294,6 +295,19 @@ impl WorldState for Blockchain {
         } else {
             Err("User already exists! (Code: 934823094)")
         };
+    }
+
+    fn get_transactions_for(&self, id: String) {
+        for block in self.blocks.iter()
+        {
+            for transaction in block.transactions.iter()
+            {
+                if id == transaction.from
+                {
+                    println!("nonce: {}, from: {}, created_at: {:?}, record: {:?}, signature: {:?}", transaction.nonce, transaction.from, transaction.created_at, transaction.record, transaction.signature);
+                }
+            }
+        }
     }
 }
 
