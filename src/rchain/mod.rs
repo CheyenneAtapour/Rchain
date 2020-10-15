@@ -42,6 +42,8 @@ pub trait WorldState {
 
     /// Will add a new account
     fn create_account(&mut self, id: String, account_type: AccountType) -> Result<(), &'static str>;
+
+    fn get_transactions_for(&self, id: String) -> Vec<Transaction>;
 }
 
 /// One single part of the blockchain.
