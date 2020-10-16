@@ -11,10 +11,6 @@ Directions to Run:
 
 cargo build
 
--Navigate to directory:
-
-/target/debug
-
 -Execute:
 
-./rchain_v1
+cargo run
